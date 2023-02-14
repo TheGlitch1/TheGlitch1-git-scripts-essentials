@@ -42,15 +42,18 @@ if defined local_branches (
                 @REM REM use in case we want to force without verifying
                 @REM git branch -D --no-verify ""%%b"
         ) else (
-            git branch -d "%%b" | findstr /r "^\*"
-            if errorlevel 1 (
-                git checkout "%%b" | findstr /r "^\*"
+            git branch -d "%%b" 
+            if errorlevel 0 (
+                echo Deleted local branch "%%b" without a remote counterpart.           
+            ) 
+            if errorlevel 1  (
+                echo Failed to delete local branch %%b without a remote counterpart...checking issue...
+                git checkout "%%b"
                 if errorlevel 1 (
                     echo Could not switch to branch "%%b". Skipping...
+                    echo Because already on "%%b". Skipping...
                 )
                @REM continue
-            ) else (
-                echo Deleted local branch "%%b" without a remote counterpart.
             )
         )
       )
