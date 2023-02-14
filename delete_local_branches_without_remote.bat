@@ -32,28 +32,26 @@ if defined local_branches (
     if errorlevel 1 (
       REM If not, ask the user if they want to delete the branch
       set "branch_name=%%b"
-      echo "Do you want to delete the local branch "%%b" without a remote counterpart? [y/n]: "
-      set /p choice=""
+      set /p choice= "Do you want to delete the local branch "%%b" without a remote counterpart? [y/n]: "
       echo "!choice!"
       if /i "!choice!"=="y" (
-        
-        @REM git branch -d "%%b"
-        git branch -d --dry-run "%%b"
+        git branch --merged | findstr /r "^\*"
         if errorlevel 1 (
             echo Failed to delete local branch %%b without a remote counterpart...checking issue...
-            git branch --merged
-            if errorlevel 1 (
-                echo Local branch "%%b" has unmerged changes, deletion cancelled.
+            echo Local branch "%%b" has unmerged changes, deletion cancelled.
                 @REM REM use in case we want to force without verifying
                 @REM git branch -D --no-verify ""%%b"
-            ) 
-            @REM else (
-            @REM     git branch -d "%%b"
-            @REM     echo Deleted local branch "%%b" without a remote counterpart.
-            @REM )
         ) else (
-            git branch -d "%%b"
-            echo Deleted local branch %%b without a remote counterpart.
+            git branch -d "%%b" | findstr /r "^\*"
+            if errorlevel 1 (
+                git checkout "%%b" | findstr /r "^\*"
+                if errorlevel 1 (
+                    echo Could not switch to branch "%%b". Skipping...
+                )
+               @REM continue
+            ) else (
+                echo Deleted local branch "%%b" without a remote counterpart.
+            )
         )
       )
     )
