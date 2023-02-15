@@ -49,6 +49,13 @@ Do you want to delete the local branch "feature/localOne" without a remote count
 Deleted branch feature/localOne (was c07d337).
 Deleted local branch "feature/localOne" without a remote counterpart.
 ```
+### switch-branch-adv.bat
+
+`comming soon`
+
+### cherry-pick-adv.bat
+
+`comming soon`
 
 ## Contribution
 
