@@ -6,15 +6,15 @@ Each script prompts the user for the path to the repository they want to access,
 
 ## Requirements
 
-This script requires Git to be installed on your system and added to your PATH environment variable. If you haven't already installed Git, you can download it from the official website: https://git-scm.com/downloads
+This script requires Git to be installed on your system and added to your PATH environment variable. If you haven't already installed Git, you can download it from the official website: https://git-scm.com/downloads.
 
 ## Notes
 
--   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) This script will permanently delete local branches that do not have a remote counterpart. Make sure you are certain that you want to delete these branches before confirming each deletion.
+-   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Please note that this script will permanently delete local branches that do not have a remote counterpart. Make sure you are certain that you want to delete these branches before confirming each deletion.
     
--   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) This script will only delete branches that are fully merged. If you have unmerged branches that you want to delete, you will need to merge them first or delete them manually.
+-   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Please note that this script will only delete branches that are fully merged. If you have unmerged branches that you want to delete, you will need to merge them first or delete them manually.
     
--   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) This script is provided as-is and without warranty. Use at your own risk.
+-   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Important : This script is provided as-is and without warranty. Use at your own risk.
 
 ## Scripts
 
@@ -27,6 +27,9 @@ The current set of scripts includes:
 - `cherry-pick-adv.bat`: easier process of picking a commit from another branch with or wihout commit to merge it in your current branch. `comming soon`
 
 ## Usage
+
+### General note
+You can simply run the scripts by entering the filename from the file location. Or simply double click the file.
 
 ### delete-local-branches-without-remote.bat
 To use the script, simply run it by entering its filename:
@@ -71,4 +74,5 @@ These scripts were inspired by Q&As found on Stack Overflow and GitHub. Special 
 
 ## Author
 
-This project was created by Yassine NATIJ. 2023
+This project was created by Yassine NATIJ. 
+2023
