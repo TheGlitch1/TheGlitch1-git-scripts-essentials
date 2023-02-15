@@ -1,5 +1,21 @@
 @echo off
 
+
+@REM Store the initial path from where the script was exec
+set "init_path=%cd%"
+
+REM Prompt the user for the path to their Git repository
+set /p repo_path="Enter the path to your Git repository: "
+
+REM Change to the specified repository directory
+cd /d "%repo_path%"
+
+git branch
+
+echo Make sure that all branches are up to date please. use git pull for each branch before continue.
+echo.
+pause
+
 set /p branch="Enter the name of the branch to cherry-pick from: "
 echo.
 
