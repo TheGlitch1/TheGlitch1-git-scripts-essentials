@@ -13,7 +13,11 @@ set /p commit="Enter the commit hash to cherry-pick, or q to quit: "
 if /i %commit% equ q exit /b
 
 echo.
-echo "Cherry-picking commit %commit% from branch %branch%..."
+echo "Cherry-picking commit %commit% from branch %branch%...."
 echo.
 
 git cherry-pick %commit%
+
+echo.
+echo Press any key to exit...
+pause >nul
