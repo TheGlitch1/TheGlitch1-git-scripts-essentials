@@ -23,7 +23,8 @@ for /f "delims=" %%i in ('git branch') do (
 )
 
 REM echo The local branches are: %local_branches%
-
+echo.
+pause
 REM Check if there are any local branches
 set "branch_name="
 if defined local_branches (
@@ -36,10 +37,13 @@ if defined local_branches (
       REM If not, ask the user if they want to delete the branch
       set "branch_name=%%b"
       set /p choice= "Do you want to delete the local branch "%%b" without a remote counterpart? [y/n]: "
-      echo "!choice!"
+      echo.
+      pause
+      echo "!choice!" Proceed to deletion ...
       if /i "!choice!"=="y" (
         git branch --merged | findstr /r "^\*"
         if errorlevel 1 (
+            echo.
             echo Failed to delete local branch %%b without a remote counterpart...checking issue...
             echo Local branch "%%b" has unmerged changes, deletion cancelled.
                 @REM REM use in case we want to force without verifying
@@ -47,12 +51,14 @@ if defined local_branches (
         ) else (
             git branch -d "%%b" 
             if errorlevel 0 (
+                echo.
                 echo Deleted local branch "%%b" without a remote counterpart.           
             ) 
             if errorlevel 1  (
                 echo Failed to delete local branch %%b without a remote counterpart...checking issue...
                 git checkout "%%b"
                 if errorlevel 1 (
+                    echo.
                     echo Could not switch to branch "%%b". Skipping...
                     echo Because already on "%%b". Skipping...
                 )
@@ -61,6 +67,7 @@ if defined local_branches (
         )
       )
     ) else (
+        echo.
         echo No local branches without remote counterparts found.
     )
   )
