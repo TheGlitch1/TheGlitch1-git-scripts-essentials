@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 
 REM Change to the specified repository directory
 REM cd /d "%repo_path%"
-cd /d "C:\Users\a841618\Workspace Y\VScodeExtenssion\todolist"
+cd /d "C:\Users\Workspace Y\VScodeExtenssion\todolist"
 
 set "local_branches="
 for /f "delims=" %%i in ('git branch -l') do (
@@ -43,4 +43,4 @@ if not defined local_branches (
 )
 
 endlocal
-cd /d "C:\Users\a841618\Workspace Y\Git essentials"
+cd /d "C:\Users\Workspace Y\Git essentials"
