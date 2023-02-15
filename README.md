@@ -22,9 +22,12 @@ The current set of scripts includes:
 
 - `delete-local-branches-without-remote.bat`: Batch Script for Deleting Local Branches without Remote.
 
+- `cherry-pick-simple.bat`: simplifying the process of picking a commit from another branch to merge it in your current branch. . `comming soon`
+
+- `cherry-pick-adv.bat`: With less human actions : easier process of picking a commit from another branch with or wihout commits to merge it in your current branch. `comming soon`
+
 - `switch-branch-adv.bat`: <!-- creates a new commit with the changes you've made to your local branch. --> `comming soon`
 
-- `cherry-pick-adv.bat`: <!-- easier process of picking a commit from another branch with or wihout commit to merge it in your current branch.--> `comming soon`
 
 ## Usage
 
@@ -52,11 +55,16 @@ Do you want to delete the local branch "feature/localOne" without a remote count
 Deleted branch feature/localOne (was c07d337).
 Deleted local branch "feature/localOne" without a remote counterpart.
 ```
-### switch-branch-adv.bat
 
-`comming soon`
+### cherry-pick-simple.bat 
+
+`More description comming soon`
 
 ### cherry-pick-adv.bat
+
+Running this script, shows the availble branches, then prompts to enter the name of the branch they want to cherry-pick from. The script then displays the last commits 5 by 5 on that branch and prompts the user to select a commit by entering the number next to the commit in the list. `More description comming soon`
+
+### switch-branch-adv.bat
 
 `comming soon`
 
