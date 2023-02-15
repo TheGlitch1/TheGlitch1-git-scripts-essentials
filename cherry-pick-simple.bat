@@ -9,7 +9,8 @@ echo.
 git log --oneline -5 %branch%
 
 echo.
-set /p commit="Enter the commit hash to cherry-pick: "
+set /p commit="Enter the commit hash to cherry-pick, or q to quit: "
+if /i %commit% equ q exit /b
 
 echo.
 echo "Cherry-picking commit %commit% from branch %branch%..."
