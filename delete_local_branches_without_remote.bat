@@ -2,6 +2,9 @@
 
 setlocal enabledelayedexpansion
 
+@REM Store the initial path from where the script was exec
+set "init_path=%cd%"
+
 REM Prompt the user for the path to their Git repository
 set /p repo_path="Enter the path to your Git repository: "
 
@@ -57,12 +60,14 @@ if defined local_branches (
             )
         )
       )
+    ) else (
+        echo No local branches without remote counterparts found.
     )
   )
 ) else (
-  echo No local branches without remote counterparts found.
+  echo No local branches found.
 )
 
-cd /d "C:\Users\a841618\Workspace Y\Git essentials"
+cd /d %init_path%
 
 endlocal
