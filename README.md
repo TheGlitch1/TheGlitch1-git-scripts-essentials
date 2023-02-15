@@ -8,7 +8,7 @@ Each script prompts the user for the path to the repository they want to access,
 
 This script requires Git to be installed on your system and added to your PATH environment variable. If you haven't already installed Git, you can download it from the official website: https://git-scm.com/downloads
 
-## Notes (FYI)
+## Notes
 
 -   ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) This script will permanently delete local branches that do not have a remote counterpart. Make sure you are certain that you want to delete these branches before confirming each deletion.
     
