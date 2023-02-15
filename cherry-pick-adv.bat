@@ -10,6 +10,7 @@ set /p repo_path="Enter the path to your Git repository: "
 REM Change to the specified repository directory
 cd /d "%repo_path%"
 
+:search_branch
 git branch
 
 echo Make sure that all branches are up to date please. use git pull for each branch before continue.
@@ -20,6 +21,7 @@ set /p branch="Enter the name of the branch to cherry-pick from: "
 echo.
 
 setlocal EnableDelayedExpansion
+:cherry_pick_loop
 set count=0
 for /f "tokens=1,2" %%a in ('git log --oneline %branch%') do (
     set /a count+=1
@@ -57,6 +59,23 @@ echo Cherry-picking commit !hash[%selection%]! from branch %branch%...
 echo.
 
 git cherry-pick !hash[%selection%]!
+
+
+set /p choice=Do you want to cherry-pick another commit? (Y/N)
+
+if /i "%choice%"=="Y" (
+    set /p same_branch=Is it from the same branch? (Y/N)
+    if /i "%same_branch%"=="Y" (
+        @REM git log %branch% --oneline -n 5 --skip 5
+        goto cherry_pick_loop
+    ) else (
+        @REM set /p branch=Enter the new branch name to cherry-pick from:
+        @REM git log %branch% --oneline -n 5
+        goto search_branch
+    )
+)
+
+echo "Don't forget to put a star on the repo. See you soon!"
 
 echo.
 echo Press any key to exit...
