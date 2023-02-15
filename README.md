@@ -22,9 +22,9 @@ The current set of scripts includes:
 
 - `delete-local-branches-without-remote.bat`: Batch Script for Deleting Local Branches without Remote.
 
-- `switch-branch-adv.bat`: creates a new commit with the changes you've made to your local branch. `comming soon`
+- `switch-branch-adv.bat`: <!-- creates a new commit with the changes you've made to your local branch. --> `comming soon`
 
-- `cherry-pick-adv.bat`: easier process of picking a commit from another branch with or wihout commit to merge it in your current branch. `comming soon`
+- `cherry-pick-adv.bat`: <!-- easier process of picking a commit from another branch with or wihout commit to merge it in your current branch.--> `comming soon`
 
 ## Usage
 
