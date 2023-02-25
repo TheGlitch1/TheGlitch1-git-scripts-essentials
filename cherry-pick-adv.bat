@@ -23,7 +23,8 @@ echo.
 setlocal EnableDelayedExpansion
 :cherry_pick_loop
 set count=0
-for /f "tokens=1,2" %%a in ('git log --oneline %branch%') do (
+@REM TODO: message array doest contain the fukk commit message with tokens=1,2
+for /f "tokens=1,*" %%a in ('git log --oneline %branch%') do (
     set /a count+=1
     set hash[!count!]=%%a
     set message[!count!]=%%b
