@@ -40,8 +40,21 @@ echo.
 @REM !start!,1,!count!
 for /l %%i in (!start!,1,!end!) do (
     echo [%%i] !hash[%%i]! !message[%%i]!
+    @REM set "hash=!hash[%%i]!"
+    @REM set "message=!message[%%i]!"
+
+    @REM rem set the color to yellow for the index
+    @REM echo | set /p="[\033[33m%%i\033[0m] "
+
+    @REM rem set the color to green for the hash
+    @REM echo | set /p="\033[32m!hash!\033[0m "
+
+    @REM rem print the message
+    @REM echo !message!
+    if %%i equ !count! goto :commit_prompt
 )
 
+:commit_prompt
 echo.
 if !end! lss !count! (
     set /p selection="Enter 'n' to see the next 5 commits or the number of the commit to cherry-pick, or q to quit: "
@@ -49,14 +62,24 @@ if !end! lss !count! (
     set /p selection="Enter the number of the commit to cherry-pick, or q to quit: "
 )
 
+@REM or !end! equ !count!
 if /i !selection! equ q exit /b
 if /i !selection! equ n (
-    set /a start+=5
-    set /a end+=5
-    goto loop
+        if !end! lss !count! (
+            set /a start+=5
+            set /a end+=5 
+            goto loop 
+        ) 
+        @REM else (
+        @REM     set /a start= !count!-5
+        @REM     set /a end= !count!
+        @REM     goto loop 
+        @REM )
 )
 
 if not defined hash[%selection%] (
+    set /p selection="The selected commit is invalid. Press any key to try again or 'q' to quit..."
+    if /i "!selection!" equ "q" exit /b
     echo Invalid selection. Press any key to try again...
     pause >nul
     goto :cherry_pick_loop
