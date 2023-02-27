@@ -41,30 +41,21 @@ if defined local_branches (
       pause
       echo "!choice!" Proceed to deletion ...
       if /i "!choice!"=="y" (
-        git branch --merged | findstr /r "^\*"
-        if errorlevel 1 (
-            echo.
-            echo Failed to delete local branch %%b without a remote counterpart...checking issue...
-            echo Local branch "%%b" has unmerged changes, deletion cancelled.
-                @REM REM use in case we want to force without verifying
-                @REM git branch -D --no-verify ""%%b"
-        ) else (
             git branch -d "%%b" 
             if errorlevel 0 (
                 echo.
                 echo Deleted local branch "%%b" without a remote counterpart.           
-            ) 
-            if errorlevel 1  (
+            ) else  (
                 echo Failed to delete local branch %%b without a remote counterpart...checking issue...
-                git checkout "%%b"
-                if errorlevel 1 (
-                    echo.
-                    echo Could not switch to branch "%%b". Skipping...
-                    echo Because already on "%%b". Skipping...
-                )
-               @REM continue
+              @REM   git checkout "%%b"
+              @REM   if errorlevel 1 (
+              @REM       echo.
+              @REM       echo Could not switch to branch "%%b". Skipping...
+              @REM       echo Because already on "%%b". Skipping...
+              @REM   )
+              @REM  @REM continue
             )
-        )
+        
       )
     ) else (
         echo.
